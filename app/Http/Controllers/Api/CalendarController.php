@@ -8,8 +8,8 @@ use App\Models\Food;
 
 class CalendarController extends Controller
 {
-    public function index(){
-        $data = Food::get();
+    public function index(Request $request){
+        $data = Food::where('user_id', $request->user()->id)->get();
         return response()->json($data);
     }
 }
