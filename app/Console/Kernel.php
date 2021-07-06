@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('SendSms:Message')->cron('0 8 * * *');
-        $schedule->command('SendSms:Message')->cron('30 15 * * *');
+        $schedule->command('SendSms:Message')->cron('0 16 * * *');
     }
 
     /**
