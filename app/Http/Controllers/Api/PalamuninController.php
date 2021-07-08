@@ -10,13 +10,13 @@ use Utility;
 
 class PalamuninController extends Controller
 {
-    public function index(){
-        $data = Palamunin::orderBy('name','desc')->paginate(10);
+    public function index(Request $request){
+        $data = Palamunin::orderBy('name','desc')->where('user_id', $request->user()->id)->paginate(10);
         return response()->json($data);
     }
 
-    public function all(){
-        $data = Palamunin::orderBy('name','desc')->get();
+    public function all(Request $request){
+        $data = Palamunin::orderBy('name','desc')->where('user_id', $request->user()->id)->get();
         return response()->json($data);
     }
 
@@ -37,6 +37,7 @@ class PalamuninController extends Controller
         }
 
         $data               = new Palamunin();
+        $data->user_id      = $request->user()->id;
         $data->name         = $request->name;
         $data->palamunin_no = Utility::generate_unique_token();
 
