@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth:api'], function () {
         $controller = FoodController::class;
         
         Route::post('/add', [$controller, 'add']);
+        Route::put('/update/{id}', [$controller, 'update']);
+        Route::get('/edit/{id}', [$controller, 'edit']);
 
     });
 
