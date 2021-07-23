@@ -11,8 +11,7 @@ class SendSmsController extends Controller
     public function contacts(){
         return [
             '09360459353' => 'Bebe Elmer',
-            '09358898117' => 'Bebe Lalaine',
-            '09127769888' => 'Bebe Alvin'
+            '09358898117' => 'Bebe Lalaine'
         ];
     }
 
@@ -21,7 +20,7 @@ class SendSmsController extends Controller
 
         foreach($contacts as $number => $contact){
             $ch      = curl_init();
-            $message = 'Hi Good Morning '.$contact.' start your day with a smile :) Labyu muahh muahhh <3';
+            $message = Inspiring::quote();
             $itexmo  = [
                 '1'      => $number,
                 '2'      => $message,
