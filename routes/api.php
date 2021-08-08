@@ -43,4 +43,9 @@ Route::group(['middleware' => 'auth:api'], function () {
 });
 
 // Axie Scholars API
-Route::get('/axie/account/details/{ronin_address}', [AxieController::class, 'index']);
+Route::group(['prefix' => 'axie'], function () {
+    
+    Route::get('/account/details/{ronin_address}', [AxieController::class, 'index']);
+    Route::get('/accounts/all', [AxieController::class, 'all']);
+
+});
