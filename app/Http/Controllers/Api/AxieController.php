@@ -24,8 +24,8 @@ class AxieController extends Controller
         foreach($collection as $item){
 
             $details              = self::index($item->roninAddress);
-            $updated_on           = Carbon::createFromTimestamp($details['updated_on'])->format('F m, Y h:i:s a');
-            $last_claim_timestamp = Carbon::createFromTimestamp($details['last_claim_timestamp'])->format('F m, Y h:i:s a');
+            $updated_on           = Carbon::createFromTimestamp($details['updated_on'])->format('F d, Y h:i:s a');
+            $last_claim_timestamp = Carbon::createFromTimestamp($details['last_claim_timestamp'])->format('F d, Y h:i:s a');
 
             $data[] = [
                 'roninAddress'       => $item->roninAddress,
