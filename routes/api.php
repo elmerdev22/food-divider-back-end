@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PalamuninController;
 use App\Http\Controllers\Api\FoodController;
 use App\Http\Controllers\Api\CalendarController;
+use App\Http\Controllers\Api\AxieController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
@@ -40,3 +41,6 @@ Route::group(['middleware' => 'auth:api'], function () {
 
     });
 });
+
+// Axie Scholars API
+Route::get('/axie/account/details/{ronin_address}', [AxieController::class, 'index']);
