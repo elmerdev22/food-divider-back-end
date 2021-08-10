@@ -23,9 +23,8 @@ class AxieController extends Controller
         foreach($collection as $item){
 
             $details              = self::index($item->roninAddress);
-            $updated_on           = Carbon::createFromTimestamp($details['slpData']['updatedOn'])->format('F d, Y h:i a');
-            $last_claim_timestamp = Carbon::createFromTimestamp($details['slpData']['lastClaim'])->format('F d, Y h:i a');
-            $next_claim_timestamp = Carbon::createFromTimestamp($details['slpData']['lastClaim'])->addDays(14)->format('F d, Y h:i a');;
+            $last_claim_timestamp = Carbon::createFromTimestamp($details['slpData']['lastClaim'])->format('F d, Y h:i A');
+            $next_claim_timestamp = Carbon::createFromTimestamp($details['slpData']['lastClaim'])->addDays(14)->format('F d, Y h:i A');;
 
             $now                  = Carbon::now();
             $last_claim_datetime  = Carbon::parse(Carbon::createFromTimestamp($details['slpData']['lastClaim'])->format('Y-m-d'));
@@ -40,7 +39,7 @@ class AxieController extends Controller
                 'lastClaimDateDiff'  => $last_claim_date_diff,
                 'totalSlp'           => $details['slpData']['totalSlp'],
                 'inGameSlp'          => $details['slpData']['gameSlp'],
-                'updatedOn'          => $updated_on,
+                'updatedOn'          => $details['slpData']['updatedOn'],
                 'lastClaimTimestamp' => $last_claim_timestamp,
                 'nextClaimTimestamp' => $next_claim_timestamp,
                 'lastClaimAmount'    => 0,
